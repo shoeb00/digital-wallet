@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/wallet.css' />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-7">
+          <div class="form d-flex justify-content-between">
+            <form id="register-form" class="my-form">
+              <h4 class="font-weight-bold mb-3">Create your wallet</h4>
+              <p class="mdb-color-text">To create a wallet, please fill in these text fiels with your wallet name and inital balance.</p>
+              <!-- Name -->
+              <div class="md-form md-outline">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="text" name="name"  id="name" class="form-control">
+                <label for="name">Wallet Name</label>
+              </div>
+              <!-- Balance -->
+              <div class="md-form md-outline">
+                <i class="fas fa-lock prefix"></i>
+                <input type="text" name="balance" id="balance" class="form-control">
+                <label for="balance">Balance</label>
+              </div>
+              <br>
+
+              <button class="btn btn-secondary float-end" id="register-submit-btn" type="submit">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="./javascripts/wallet.js"></script>
+</html>
+

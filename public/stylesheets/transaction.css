@@ -1,0 +1,9 @@
+#amount, #balance{
+    width:100px;
+}
+#description{
+    width: 400px;
+}
+#type, #date{
+    width: 100px;
+}

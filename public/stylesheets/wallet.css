@@ -1,0 +1,58 @@
+body {
+    background:  #f3f2f2; 
+  }
+  .row {
+    height: 100vh;
+  }
+  .form {
+    background:  #ffffff; 
+    border-radius:  4px; 
+    box-shadow:  0px 2px 6px -1px rgba(0,0,0,.12);
+  }
+  .my-form {
+    padding: 2.5rem;
+  }
+  .my-form h4 {
+    color: #92aad0;
+  }
+  .my-form p {
+    font-size: .875rem;
+    font-weight: 400;
+  }
+  .btn {
+    background-color: #92aad0;
+    right: 0;
+  }
+  .btn:hover, .btn:active, .btn:focus {
+    color: #fff;
+  }
+  a {
+    bottom: 0;
+  }
+  .space {
+    padding-bottom: 4rem;
+  }
+  .link {
+    font-size: .875rem;
+    float: right;
+    color: #6582B0;
+  }
+  .link:hover, .link:active {
+    color: #426193;
+  }
+  @-webkit-keyframes autofill {
+    to {
+      color: #666;
+      background: transparent; } }
+  
+  @keyframes autofill {
+    to {
+      color: #666;
+      background: transparent; } }
+  
+  input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both; 
+}

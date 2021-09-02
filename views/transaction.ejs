@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/wallet.css' />
+    <link rel='stylesheet' href='/stylesheets/transaction.css' />
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./javascripts/transaction.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-9">
+          <div class="form d-flex justify-content-between">
+            <form action="" class="my-form" method="post">
+              <h4 class="font mb-3">Transaction History</h4>
+              <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th id="sl" scope="col">Sl.no</th>
+                        <th id="amount" scope="col">Amount</th>
+                        <th id="balance" scope="col">Balance</th>
+                        <th id="description" scope="col">Description</th>
+                        <th id="type" scope="col">Type</th>
+                        <th id="date" scope="col">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for(let i = 1; i < 4; i++){ %>
+                      <tr class="table-light">
+                        <th scope="row"><%=i %></th>
+                        <td><%=i*100 %></td>
+                        <td><%=i*2 %></td>
+                        <td> Lorem ipsum dolor sit amet, consectetur adipisicing elit.  </td>
+                        <td> CREDIT </td>
+                        <td> Date </td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                  <div class="navbar">
+                    <button class="btn btn-primary float-start" type="button" onclick="location.href='http://localhost:3000/home'">Home</button>
+                    <button class="btn btn-primary float-end" type="button">Download</button>
+                  </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

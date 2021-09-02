@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/wallet.css' />
+    <link rel='stylesheet' href='/stylesheets/home.css' />
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./javascripts/home.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-7">
+          <div class="form d-flex justify-content-between">
+            <form action="" class="my-form" method="post">
+              <!-- Wallet -->
+              <h4 class="font-weight-bold mb-3">Wallet Name</h4>
+              <div class="details">
+                <label for="">Wallet Id : <%= id %></label> <br> 
+                <label for="">Wallet Name : <%= name %></label> <br>      
+                <label for="">Current Balance : <%= balance%></label>
+              </div>
+              <br>
+              <hr>
+              <!-- Transaction -->
+              <div class="transaction" style="display:none">
+                <h4 class="font-weight-bold mb-3">Transaction</h4>
+                <!-- Amount -->
+              <div class="md-form md-outline">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="text" id="amount" placeholder="Amount" class="form-control" required>
+                <br>
+              </div>
+              <!-- Description -->
+              <div class="md-form md-outline">
+                <i class="fas fa-lock prefix"></i>
+                <input type="text" id="description" placeholder="Description"class="form-control" required>
+              </div>
+              <br>
+              <!-- Transaction type -->
+              <div class="transaction-type">
+                <input type="radio" id="credit" name="transaction-type" value="credit" checked="checked">
+                <label for="credit">Credit</label>
+                <span style="display:inline-block; width: 20%;"></span>
+                <input type="radio" id="debit" name="transaction-type" value="debit">
+                <label for="debit">Debit</label>
+              </div>
+              <span class="warning" style="color:red; display:none">Amount should be greater than 0.</span>
+              <br>
+              <hr>
+              <div class="navbar-confirm">
+                <button id="cancel" class="btn btn-danger float-start" type="button" onclick="cancelTransaction()">Cancel</button>
+                <button id="confirm" class="btn btn-success float-end" type="submit" onclick="confirmTransaction(event)">Confirm Transaction</button>
+              </div>  
+            </div>
+              <div class="navbar">
+                <button class="btn btn-primary float-start" type="button" onclick="transaction()">Debit/Credit</button>
+                <button class="btn btn-primary float-end" type="button" onclick="location.href='http://localhost:3000/transaction'">Transaction History</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
