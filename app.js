@@ -22,7 +22,7 @@ app.use(cookieParser())
 // custom response method
 app.use((req, res, next) => {
   res.publish = (data, ejsFile, status = 200) => {
-    if(req.browser) {
+    if(req.browser && ejsFile) {
       return res.render(ejsFile, data);
     }
     return res.status(status).json(data);
@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/health-check', (req, res) => {
-  return res.publish({ message: "Server is ready to accept connections." });
+  return res.publish({ message: "Server is ready to accept connections." }, "");
 });
 
 app.get('/register', (req, res) => {

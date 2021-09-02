@@ -10,9 +10,8 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
-    "express-session": "^1.17.2",
     "http-errors": "~1.6.3",
-    "uuid": "^8.3.2",
+    "mongoose": "^6.0.4",
     "winston": "^3.3.3"
   }
 }

@@ -1,0 +1,22 @@
+version: "3.9"
+   
+services:
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data
+
+  app:
+    build: .
+    environment:
+      - PORT=3000
+      - DB_URI=mongodb://db:27017/wallet
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+volumes:
+  mongodb-data: 

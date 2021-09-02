@@ -3,10 +3,12 @@ const logger = require('../logger/logger');
 const config = require('../config.json');
 const { Schema } = mongoose;
 
+const db_uri = process.env.DB_URI || config.db_uri;
+
 (async()=>{
     try{
-        await mongoose.connect(config.db_uri, {useNewUrlParser: true});
-        logger.info('connected to mongodb on: ' + config.db_uri);
+        await mongoose.connect(db_uri, {useNewUrlParser: true});
+        logger.info('connected to mongodb on: ' + db_uri);
     }catch(e){
         logger.error('unable to connect to DB: ', e)
     }

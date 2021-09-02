@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "a145a1ca-e25f-4179-97a5-ea367ed11e40",
+		"name": "High level",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Wallet",
+			"item": [
+				{
+					"name": "Create wallet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"wallet21\",\n    \"balance\": 11\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/setup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"setup"
+							],
+							"query": [
+								{
+									"key": "wallet",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get wallet by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/wallet/612fb521b7ee39a3b931325a",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"wallet",
+								"612fb521b7ee39a3b931325a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Create new transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\" : 10,\n    \"description\" : \"hello\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/transaction/612fc77682928c8911bc4f08",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transaction",
+								"612fc77682928c8911bc4f08"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/transaction?walletId=612fc77682928c8911bc4f08&skip=1&limit=5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transaction"
+							],
+							"query": [
+								{
+									"key": "walletId",
+									"value": "612fc77682928c8911bc4f08"
+								},
+								{
+									"key": "skip",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:3000"
+		}
+	]
+}

@@ -4,10 +4,15 @@ const logger = require('../logger/logger')
 const { createWallet, getWallet } = require('../models/wallet');
 const { createTransaction } = require('../models/transaction');
 
+router.get('/', (req, res) => {
+  return res.redirect('/home');
+})
+
 router.get('/home', async (req, res) => {
     try {
       const wallet = await getWallet(req.user);
       if(!wallet) {
+        res.cookie('XW_ID', "");
         return res.publish({ message: 'No wallet found with id ' + req.user }, '', 400);
       }
       return res.publish(wallet, 'home');
