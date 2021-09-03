@@ -7,20 +7,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./javascripts/home.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-md-7">
+        <div class="col-md-8">
           <div class="form d-flex justify-content-between">
-            <form action="" class="my-form" method="post">
+            <form action="" id="register-form" class="my-form">
               <!-- Wallet -->
               <h4 class="font-weight-bold mb-3">Wallet Name</h4>
               <div class="details">
                 <label for="">Wallet Id : <%= id %></label> <br> 
                 <label for="">Wallet Name : <%= name %></label> <br>      
-                <label for="">Current Balance : <%= balance%></label>
+                <label for="">Current Balance : <%= balance/100 %></label>
               </div>
               <br>
               <hr>
@@ -52,12 +51,12 @@
               <hr>
               <div class="navbar-confirm">
                 <button id="cancel" class="btn btn-danger float-start" type="button" onclick="cancelTransaction()">Cancel</button>
-                <button id="confirm" class="btn btn-success float-end" type="submit" onclick="confirmTransaction(event)">Confirm Transaction</button>
+                <button id="confirm" class="btn btn-success float-end" type="submit">Confirm Transaction</button>
               </div>  
             </div>
               <div class="navbar">
                 <button class="btn btn-primary float-start" type="button" onclick="transaction()">Debit/Credit</button>
-                <button class="btn btn-primary float-end" type="button" onclick="location.href='http://localhost:3000/transaction'">Transaction History</button>
+                <button class="btn btn-primary float-end" type="button" onclick="location.href='/transaction'">Transaction History</button>
               </div>
             </form>
           </div>
@@ -65,5 +64,6 @@
       </div>
     </div>
   </body>
+  <script type="text/javascript" src="./javascripts/home.js"></script>
 </html>
 

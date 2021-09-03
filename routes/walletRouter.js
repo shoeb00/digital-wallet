@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
   return res.redirect('/home');
 })
 
+
 router.get('/home', async (req, res) => {
     try {
       const wallet = await getWallet(req.user);
@@ -37,16 +38,17 @@ router.post('/setup', async (req, res)=> {
         'message' :'name is a required field'
       });
     }
-    if(req.body.balance < 0){
+    const balance = Number(req.body.balance);
+    if(!balance || balance < 0){
       return res.status(400).json({
-        'message' : 'Initial balance cannot be negative'
+        'message' : 'Initial balance cannot be empty or negative'
       });
     }
 
-    const wallet = await createWallet(req.body.name, req.body.balance*100);
-    await createTransaction(wallet.id, wallet.balance, 'wallet initial balance')
+    const wallet = await createWallet(req.body.name);
+    const trans = await createTransaction(wallet.id, balance, 'wallet initial balance');
     res.cookie('XW_ID', wallet._doc._id.toString());
-    res.publish({'id': wallet.id, 'name' : wallet.name, 'balance' : wallet.balance}, 'home')
+    res.publish({'id': wallet.id, 'name' : wallet.name, 'balance' : trans.balance}, 'home')
   } 
   catch(e) {
     return res.status(500).json({ message: 'Server encountered an error', description: e.toString() });

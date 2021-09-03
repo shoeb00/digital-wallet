@@ -6,31 +6,44 @@ async function createTransaction(id, amount, description){
     logger.debug(id)
     try{
         let walletRecord = await WalletDb.findById(id)
-        walletRecord = walletRecord._doc
-        if(walletRecord.balance - amount < 0){
+        logger.debug('walletRecord', walletRecord)
+        if(walletRecord.balance + amount < 0){
             return Promise.reject(new Error("Not enough balance to complete this transaction"))
         }
+        const balance = (walletRecord.balance + amount).toPrecision(4);
+
         const newTransaction = new TransactionDb({
             walletId: id,
             amount: amount,
-            balance: (walletRecord.balance + amount).toPrecision(4),
+            balance: balance,
             description : description,
             type : (amount > 0) ? 'CREDIT' : 'DEBIT' 
-        })
+        });
+        walletRecord.balance = balance;
+        await walletRecord.save();
         const record = await newTransaction.save()
+        if(record) {
+            record.id = record._id;
+            delete record._id;
+        }
         return record
     }
     catch(e){
         logger.error("Transaction failed : ", e.toString())
-        return null
+        return Promise.reject(new Error("DBError: " + e.toString()));
     }
 
 }
 
-async function getTransaction(walletId, skip, limit){
+async function getTransaction(walletId, skip = 0, limit = 10){
     try{
         const record = await TransactionDb.find({ walletId: walletId }).skip(Number(skip)).limit(limit);
-        logger.debug('record found : ', record)
+        if(record && record.length > 0) {
+            for(let i=0; i< record.length; i++) {
+                record[i].id = record[i]._id;
+                delete record[i]._id;
+            }
+        }
         return record;
     }
     catch(e){

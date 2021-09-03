@@ -1,12 +1,28 @@
-// function validate(e){
-//     $('.my-form').submit((e)=>{
-//         e.preventDefault();
-//         if($('#amount') <= 0) {
-//             $('transaction-type').after('<span class="error">Amount cannot be negative</span>');
-//         }
-//     })
-    
-// }
+async function handleSubmit (e) {
+    e.preventDefault();
+      data = {
+        amount : $('#amount').val(),
+        description : $('#description').val(),
+        type : $("input[type='radio'][name='transaction-type']:checked").val(),
+      }
+  
+      let response = await fetch(`/transaction`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+      })
+  
+      let text = await response.text(); // read response body as text
+      console.log(text)
+      document.write(text);
+  };
+  
+  const formEle = document.querySelector("#register-form");
+  if(formEle) {
+      formEle.addEventListener('submit', handleSubmit);
+  }
 
 function confirmTransaction(event){
     const amount = $('#amount').val()
@@ -29,6 +45,7 @@ function cancelTransaction(){
     $('#amount').val('')
     $('#description').val('')
     $('#credit').val('checked')
+    $('.warning').css('display', 'none')
     $('.transaction').css('display', 'none')
     $('.navbar').css('display', 'inline')
 }

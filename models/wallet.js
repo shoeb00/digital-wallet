@@ -5,11 +5,11 @@ const { WalletDb } = require('../utils/mongodb');
 
 app.use(cookieParser())
 
-async function createWallet(name, balance) {
+async function createWallet(name) {
     try{
         const newWallet = new WalletDb({
             name,
-            balance
+            balance: 0,
         })
         const record = await newWallet.save();
         return record;
@@ -25,6 +25,7 @@ async function getWallet(id){
         const record = await WalletDb.findById(id);
         if(record) {
             record.id = record._id;
+            delete record._id;
         }
         return record;
     }
