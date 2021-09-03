@@ -1,7 +1,8 @@
 const express = require('express');
 const logger = require('../logger/logger');
 const router = express.Router();
-const {createTransaction, getTransaction} = require('../models/transaction')
+const {createTransaction, getTransaction} = require('../models/transaction');
+const { getWallet } = require('../models/wallet');
 
 
 router.get('/', async (req, res) => {
@@ -63,12 +64,16 @@ router.post('/:id', async (req, res) => {
 
 router.post('/', async(req, res) => {
   try{
-    console.log('--->', req.user, req.body.amount, req.body.description)
-    if(req.body.type === 'debit'){
+    if(!req.user) {
+      return res.redirect('/register');
+    }
+    const type = req.body.type;
+    if(type && type.toLowerCase() === 'debit'){
       req.body.amount *= -1 
     } 
-    const record = await createTransaction(req.user, req.body.amount, req.body.description)
-    return res.render('home')
+    await createTransaction(req.user, req.body.amount, req.body.description)
+    const record = await getWallet(req.user);
+    return res.render('home', record);
   }
   catch(e){
     return res.status(500).json({ message: 'Server encountered an error', description: e.toString() });

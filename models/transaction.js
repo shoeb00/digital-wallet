@@ -3,10 +3,10 @@ const { TransactionDb, WalletDb } = require("../utils/mongodb")
 
 
 async function createTransaction(id, amount, description){
-    logger.debug(id)
     try{
+        amount = Number(amount);
         let walletRecord = await WalletDb.findById(id)
-        logger.debug('walletRecord', walletRecord)
+        logger.info('walletRecord: ', walletRecord)
         if(walletRecord.balance + amount < 0){
             return Promise.reject(new Error("Not enough balance to complete this transaction"))
         }
@@ -22,11 +22,15 @@ async function createTransaction(id, amount, description){
         walletRecord.balance = balance;
         await walletRecord.save();
         const record = await newTransaction.save()
-        if(record) {
-            record.id = record._id;
-            delete record._id;
+        const res = {
+            walletId: walletRecord._id,
+            id: record._id,
+            amount: record.amount,
+            balance: walletRecord.balance,
+            description: record.description,
+            type: record.type,
         }
-        return record
+        return res;
     }
     catch(e){
         logger.error("Transaction failed : ", e.toString())

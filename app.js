@@ -30,7 +30,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// custom middleware to verify session cookies
+// custom middleware to verify session cookies and to check request devicetype
 app.use((req, res, next) => {
   let check = req.headers['user-agent']
   check = JSON.stringify(check).toLowerCase();
@@ -57,7 +57,6 @@ app.get('/health-check', (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-  console.log('in register:', req.user);
   if(req.user) {
     return res.redirect('/home');
   }

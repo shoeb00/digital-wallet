@@ -16,7 +16,7 @@ async function handleSubmit (e) {
   
       let text = await response.text(); // read response body as text
       console.log(text)
-      document.write(text);
+      window.location.href = window.location.origin + "/home";
   };
   
   const formEle = document.querySelector("#register-form");
