@@ -39,7 +39,7 @@ async function createTransaction(id, amount, description){
 
 }
 
-async function getTransaction(walletId, skip = 0, limit = 10){
+async function getTransaction(walletId, skip = 0, limit = 100){
     try{
         const record = await TransactionDb.find({ walletId: walletId }).skip(Number(skip)).limit(limit);
         if(record && record.length > 0) {

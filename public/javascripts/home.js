@@ -15,7 +15,6 @@ async function handleSubmit (e) {
       })
   
       let text = await response.text(); // read response body as text
-      console.log(text)
       window.location.href = window.location.origin + "/home";
   };
   
@@ -26,10 +25,8 @@ async function handleSubmit (e) {
 
 function confirmTransaction(event){
     const amount = $('#amount').val()
-    console.log(amount, '-')
     if($.isNumeric(amount) === false|| amount <= 0) {
         event.preventDefault();
-        console.log('stuck ')
         $('.warning').css('display', 'inline')
         return false
     }

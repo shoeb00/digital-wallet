@@ -72,8 +72,8 @@ The Application can be set up by either using the docker-compose.yml file or by 
 ### Prerequisites
 <li> <a href='https://docs.docker.com/get-docker/'> Docker </a></li>
 <li><a href='https://docs.docker.com/compose/install/'>Docker-Compose</a></li>
-<li><a href='https://docs.docker.com/compose/install/'>Node.js</a></li>
-<li><a href='https://docs.docker.com/compose/install/'>Mongodb</a></li>
+<li><a href='https://nodejs.org/'>Node.js</a></li>
+<li><a href='https://www.mongodb.com/'>Mongodb</a></li>
 
 ### Installation
 

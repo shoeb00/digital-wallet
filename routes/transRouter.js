@@ -53,7 +53,6 @@ router.post('/:id', async (req, res) => {
         message: "Amount and Description are required fields"
       })
     }
-    console.log('Transaction: ', req.body, req.params.id)
     const record = await createTransaction(req.params.id, req.body.amount, req.body.description)
     res.status(200).json(record)
   }
