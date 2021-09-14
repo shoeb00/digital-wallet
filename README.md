@@ -1,5 +1,5 @@
 # Digital Wallet 
-#### A web application that manages your wallet, perform simple debit/credit queries and support the transactions history. [Demo](https://drive.google.com/file/d/1QKOJQo1IPDUI396c40b_bSExF6s48FDV/view?usp=sharing)
+#### A web application that manages your wallet, perform simple debit/credit queries and support the transactions history. Here's the [demo](https://drive.google.com/file/d/1QKOJQo1IPDUI396c40b_bSExF6s48FDV/view?usp=sharing).
 
 ## Build With
 #### Express as the framework to handle the incoming requests, MongoDB to store the transactions. 
